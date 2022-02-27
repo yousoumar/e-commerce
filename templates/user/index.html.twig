@@ -21,15 +21,15 @@
         <tbody>
 
         <tr>
-            <td>{{ app.user.id }}</td>
-            <td>{{ app.user.email }}</td>
-            <td>{{ app.user.roles ? app.user.roles|json_encode : '' }}</td>
-            <td>{{ app.user.password }}</td>
-            <td>{{ app.user.firstName }}</td>
-            <td>{{ app.user.lastName }}</td>
-            <td>{{ app.user.phone }}</td>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.phone }}</td>
             <td>
-                <a href="{{ path('app_user_edit', {'id': app.user.id}) }}">edit</a>
+                <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
             </td>
         </tr>
 

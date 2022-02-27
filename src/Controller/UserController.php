@@ -11,13 +11,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-#[Route('/profile')]
+#[Route('/user')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
+    public function index(): Response
     {
-        return $this->render('profile/index.html.twig');
+
+        return $this->render('user/index.html.twig', [
+            'user'=>$this->getUser(),
+        ]);
     }
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
@@ -31,7 +34,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('profile/edit.html.twig', [
+        return $this->renderForm('user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
