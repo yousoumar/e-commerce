@@ -14,7 +14,6 @@
                 <th>Password</th>
                 <th>FirstName</th>
                 <th>LastName</th>
-                <th>Phone</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -27,7 +26,6 @@
             <td>{{ user.password }}</td>
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
-            <td>{{ user.phone }}</td>
             <td>
                 <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
             </td>
