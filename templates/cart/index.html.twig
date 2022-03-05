@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+
+        <h1>Cart</h1>
+        {% if products |length <=0 %}
+        <tr>
+            <td colspan="6">no records found</td>
+        </tr>
+        {% endif %}
+        {% for product in products %}
+            <div>
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>{{ product.price}}€</p>
+                <p>{{ product.available ? "Available" : "Not available"}}</p>
+                <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
+            </div>
+
+        {% endfor %}
+        {% if products | length > 0 %}
+        <tr>
+            <div>Total :{{ totalPrice }}€ </div>
+        </tr>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -22,15 +22,23 @@ class AppFixtures extends Fixture
         $user->setFirstName("User");
         $user->setLastName("User");
         $user->setEmail("user@bookstore.com");
-        $user->setPassword($this->hasher->hashPassword(    $user, 'user'));
+        $user->setPassword($this->hasher->hashPassword( $user, 'user'));
+        $user->setAddress("1 rue du Faubourg");
+        $user->setCity("Paris");
+        $user->setCp("75019");
+        $user->setCountry("France");
         $manager->persist($user);
 
         $admin = new User();
-        $admin->setFirstName("admin");
-        $admin->setLastName("admin");
+        $admin->setFirstName("Admin");
+        $admin->setLastName("Admin");
         $admin->setEmail("admin@bookstore.com");
         $admin->setRoles(["ROLE_ADMIN"]);
         $admin->setPassword($this->hasher->hashPassword($admin, 'admin'));
+        $admin->setAddress("1 rue du Faubourg");
+        $admin->setCity("Paris");
+        $admin->setCp("75019");
+        $admin->setCountry("France");
         $manager->persist($admin);
 
         $roman = new Category();

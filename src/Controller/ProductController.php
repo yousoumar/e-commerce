@@ -82,4 +82,27 @@ class ProductController extends AbstractController
 
         return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
     }
+    #[Route('/add-to-cart/{id}', name: 'app_product_add_to_cart', methods: ['GET'])]
+    public function addToCart(Request $request, Product $product): Response
+    {
+        $session = $request->getSession();
+        $cart =  $session->get("cart");
+        if(!$cart){
+            $cart=[];
+        }
+        if(!in_array($product->getId(), $cart)) {
+            $cart[] = $product->getId();
+        }else{
+
+            $index =array_search($product->getId(), $cart);
+            unset($cart[$index]);
+
+        }
+        $session->set("cart",$cart);
+
+
+
+
+        return $this->redirectToRoute('app_product_show', ['id'=>  $product->getId()]) ;
+    }
 }

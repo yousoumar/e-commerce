@@ -4,7 +4,8 @@
 
 {% block body %}
     <h1>Product</h1>
-
+    <a href="{{ path('app_product_index') }}">Product list</a>
+    <a href="{{ path('app_category_index') }}">Category list</a>
     <table class="table">
         <tbody>
             <tr>
@@ -29,8 +30,14 @@
             </tr>
         </tbody>
     </table>
+    {% if not is_granted('ROLE_ADMIN') %}
+        {% if( product.id in app.session.get("cart")) %}
+        <a href="{{ path('app_product_add_to_cart', {'id': product.id}) }}">Remove from cart</a>
+        {% else %}
+            <a href="{{ path('app_product_add_to_cart', {'id': product.id}) }}">Add to cart</a>
+        {% endif %}
+    {% endif %}
 
-    <a href="{{ path('app_product_index') }}">back to list</a>
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
         {{ include('product/_delete_form.html.twig') }}

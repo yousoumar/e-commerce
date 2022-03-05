@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,6 +33,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 255)]
     private $lastName;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $phone;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $address;
+
+    #[ORM\Column(type: 'integer')]
+    private $cp;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $city;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $country;
+
+
 
 
     public function getId(): ?int
@@ -127,4 +146,70 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+
+
+    public function __toString()
+    {
+        return $this->lastName;
+    }
+
+    public function getPhone(): ?int
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?int $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getCp(): ?int
+    {
+        return $this->cp;
+    }
+
+    public function setCp(int $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
 }
