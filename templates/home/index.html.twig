@@ -1,48 +1,53 @@
 {% extends 'base.html.twig' %}
-
+{% block class %}home{% endblock %}
 {% block title %}Home{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
 
-    <h1>Welcome to your own BookStore!</h1>
-    <h2>Categories</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
+    <div class="categories">
+        <h2>Categories</h2>
+        <div class="grid">
 
-                <td>{{ category.name }}</td>
-                <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
-                    {% endif %}
+            {% for category in categories %}
+                <a href="{{ path('app_category_show', {'id': category.id}) }}" class="category">
+                    <div class="img">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"/>
+                    </div>
+                    <h3> {{ category.name }}</h3>
+                </a>
 
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            {% else %}
+
+                <p colspan="4">no records found</p>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="products">
+        <h2>Products</h2>
+        <div class="grid">
+
+            {% for product in products %}
+                <a href="{{ path('app_category_show', {'id':  product.id}) }}" class="product">
+                    <div class="img">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"/>
+                    </div>
+                    <h3> {{ product.name }}</h3>
+                </a>
+
+            {% else %}
+
+                <p colspan="4">no records found</p>
+
+            {% endfor %}
+        </div>
+
+    </div>
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('app_category_new') }}">Create new</a>
     {% endif %}
 
-
-</div>
 {% endblock %}

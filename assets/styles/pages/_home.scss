@@ -1,0 +1,49 @@
+.home{
+  .grid{
+    display: grid;
+    gap: 2rem;
+
+    .img{
+      height: 100%;
+      border-radius: 1rem;
+      height: 350px;
+      overflow: hidden;
+    }
+    img{
+      height: 100%;
+    }
+
+  }
+  .categories{
+    .category{
+      position: relative;
+
+    }
+    .img{
+      position: relative;
+      &::before{
+        content: "";
+        position: absolute;
+        top:0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, .6);
+      }
+    }
+    h3{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      color: var(--forground);
+
+    }
+
+  }
+  @include  media-breakpoint-up(md){
+    .grid{
+     grid-template-columns: 1fr 1fr;
+    }
+  }
+}

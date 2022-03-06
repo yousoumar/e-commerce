@@ -81,7 +81,7 @@ Encore
 
             reload: true,
         }
-    ),)
+    ))
     // enables Sass/SCSS support
     .enableSassLoader()
 
