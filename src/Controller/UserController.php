@@ -27,7 +27,9 @@ class UserController extends AbstractController
     #[Route('{id}/show', name: 'app_user_show', methods: ['GET'])]
     public function show( User $user): Response
     {
-
+        if($user->getUserIdentifier()!== $this->getUser()->getUserIdentifier()){
+            return $this->redirectToRoute("app_home");
+        }
         return $this->render('user/show.html.twig', [
             'user'=>$user,
         ]);
@@ -36,6 +38,9 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserRepository $userRepository): Response
     {
+        if($user->getUserIdentifier()!== $this->getUser()->getUserIdentifier()){
+            return $this->redirectToRoute("app_home");
+        }
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -53,6 +58,9 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, UserRepository $userRepository, TokenStorageInterface $tokenStorage): Response
     {
+        if($user->getUserIdentifier()!== $this->getUser()->getUserIdentifier()){
+            return $this->redirectToRoute("app_home");
+        }
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user);
         }

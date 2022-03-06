@@ -77,6 +77,10 @@ button, .button{
     margin-right: auto;
     width: max-content;
   }
+  &.right{
+    margin-left: auto;
+    width: max-content;
+  }
 }
 .outline{
   background-color: transparent;
