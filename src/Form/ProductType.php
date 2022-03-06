@@ -17,7 +17,7 @@ class ProductType extends AbstractType
             ->add('description')
             ->add('price')
             ->add('category')
-            ->add('available', CheckboxType::class)
+            ->add('available')
         ;
     }
 

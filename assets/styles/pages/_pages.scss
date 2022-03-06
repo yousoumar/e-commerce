@@ -1,9 +1,3 @@
-.home{
-
-
-
-}
-
 .user-show{
 
   .column >div{
@@ -51,6 +45,9 @@
 
    }
  }
+  .button{
+    margin-top: 1rem;
+  }
   @include  media-breakpoint-up(md){
     .category{
       display: grid;

@@ -61,11 +61,7 @@ input, button, .button, select{
   margin-bottom: 1rem ;
   margin-top: .4rem ;
 }
-#product_available{
-  width: inherit;
-  display: inline-block;
-  margin-left: 1rem;
-}
+
 button, .button{
   background-color: var(--primary);
   border-color: var(--primary);
@@ -85,6 +81,15 @@ button, .button{
 .outline{
   background-color: transparent;
 }
+
+.buttons{
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  .left, .right{
+    margin: 0;
+  }
+}
 .container{
   max-width: 1200px;
   margin: auto;
@@ -100,25 +105,34 @@ button, .button{
     color: var(--primary);
   }
 }
-
-.products, .categories{
-
-  .unavailable{
+.product{
+  p{
+    margin: .3rem 0;
+  }
+  &.unavailable{
     .img{
       position: relative;
+      overflow: hidden;
       &::before{
         content :"Unavailable";
         position: absolute;
         z-index: 3;
         right: 0rem;
         top:0rem;
-        background-color: var(--background);
+        background-color: var(--primary);
         color: var(--forground);
+        padding: .3rem;
+
 
       }
     }
 
   }
+
+}
+.products, .categories{
+
+
   .grid{
     display: grid;
     gap: 2rem;
@@ -168,6 +182,36 @@ button, .button{
     transform: translate(-50%,-50%);
     color: var(--forground);
 
+  }
+
+}
+
+.total-cart{
+
+  font-size: 2rem;
+  margin-left: auto;
+  width: max-content;
+  strong{
+    color: var(--primary);
+  }
+}
+.users{
+  display: grid;
+  gap: 2rem;
+  @include  media-breakpoint-up(md){
+  grid-template-columns: 1fr 1fr;
+  }
+}
+.user{
+  border: 1px solid var(--gray);
+  padding: 1rem;
+  border-radius: 10px;
+  display: grid;
+  gap: 1rem;
+  >div{
+    border: 1px solid var(--gray);
+    padding: .5rem;
+    border-radius: 10px;
   }
 
 }

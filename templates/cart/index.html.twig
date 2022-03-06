@@ -1,29 +1,21 @@
 {% extends 'base.html.twig' %}
-
+{% block class %}Cart{% endblock %}
 {% block title %}Cart{% endblock %}
 
 {% block body %}
 
-    <div class="example-wrapper">
 
-        <h1>Cart</h1>
+
+
         {% if products |length <=0 %}
+            <h1>Empty, literally empty :( </h1>
             <p colspan="6">No records found in your cart. Feel free to browse our large <span class="logo"><span>B</span>ook<span>S</span>tore</span>. We are sure you can find something that suits you :). </p>
         {% endif %}
-        {% for product in products %}
-            <div>
-                <h2>{{ product.name }}</h2>
-                <p>{{ product.description }}</p>
-                <p>{{ product.price}}€</p>
-                <p>{{ product.available ? "Available" : "Not available"}}</p>
-                <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-            </div>
 
-        {% endfor %}
         {% if products | length > 0 %}
-        <tr>
-            <div>Total :{{ totalPrice }}€ </div>
-        </tr>
+            <h1>In your cart and  us ready to send them :)</h1>
+            {{ include('partials/_products.html.twig')}}
+            <div class="total-cart">Total: <strong>{{ totalPrice }}€</strong> </div>
         {% endif %}
-    </div>
+
 {% endblock %}

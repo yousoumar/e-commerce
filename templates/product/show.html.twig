@@ -5,11 +5,12 @@
 
 {% block body %}
 
-    <div class="category">
+    <div class="category product {{ product.available ? "" : "unavailable" }}">
         <div class="text">
             <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
 
+            <p>{{ product.description }}</p>
+            <p class="primary"><strong>{{ product.price }}</strong> €</p>
                 {% if is_granted('ROLE_ADMIN') %}
                     <div class="links">
                         <a  href="{{ path('app_product_edit', {'id': product.id}) }}">Edit</a>

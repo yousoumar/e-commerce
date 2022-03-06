@@ -47,6 +47,9 @@ class ProductController extends AbstractController
     #[Route('/{id}', name: 'app_product_show', methods: ['GET'])]
     public function show(Product $product): Response
     {
+        if(!$product->getAvailable() && !$this->isGranted('ROLE_ADMIN')){
+            return $this->redirectToRoute("app_home");
+        }
         return $this->render('product/show.html.twig', [
             'product' => $product,
         ]);
@@ -88,6 +91,9 @@ class ProductController extends AbstractController
     #[Route('/add-to-cart/{id}', name: 'app_product_add_to_cart', methods: ['GET'])]
     public function addToCart(Request $request, Product $product): Response
     {
+        if($this->isGranted('ROLE_ADMIN')){
+            return $this->redirectToRoute("app_home");
+        }
         $session = $request->getSession();
         $cart =  $session->get("cart");
         if(!$cart){

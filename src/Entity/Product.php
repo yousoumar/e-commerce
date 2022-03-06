@@ -17,13 +17,14 @@ class Product
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 455)]
     private $description;
 
     #[ORM\Column(type: 'float')]
     private $price;
 
     #[ORM\Column(type: 'boolean')]
+    #[ORM\JoinColumn(nullable: true)]
     private $available;
     /**
      * @Assert\NotNull(

@@ -1,40 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Users{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <h1>All users, literally all of them :)</h1>
+    <div class="users">
     {% for user in users  %}
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Email</th>
-                    <th>Roles</th>
-                    <th>Password</th>
-                    <th>FirstName</th>
-                    <th>LastName</th>
-                    <th>actions</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.lastName }}</td>
-                <td>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-
-            </tr>
-
-            </tbody>
-        </table>
+           <div class="user {{ is_granted('ROLE_ADMIN') ? "admin" :"" }}">
+               <div>{{ user.firstName }}, <strong>{{ user.lastName }}</strong></div>
+               <div>{{ user.city }}, <strong>{{ user.country }}</strong></div>
+               <div>{{ user.email }}</div>
+           </div>
     {% endfor %}
-
+    </div>
 
 {% endblock %}
