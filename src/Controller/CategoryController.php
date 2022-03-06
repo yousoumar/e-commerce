@@ -77,6 +77,9 @@ class CategoryController extends AbstractController
     #[Route('/{id}', name: 'app_category_delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
+        if(!$this->isGranted('ROLE_ADMIN')){
+            return $this->redirectToRoute("app_home");
+        }
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category);
         }

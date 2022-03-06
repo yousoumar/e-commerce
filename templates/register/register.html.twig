@@ -3,11 +3,29 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="form with-groups">
+        <h1>Welcome to <span class="logo"><span>B</span>ook<span>S</span>tore</span></h1>
+        <p>Create your account for a better shopping experience</p>
+        {{ form_start(registrationForm) }}
+       <div class="groupes">
+           <div class="group">
+               {{ form_row(registrationForm.email) }}
+               {{ form_row(registrationForm.password) }}
+               {{ form_row(registrationForm.firstName) }}
+               {{ form_row(registrationForm.lastName) }}
+           </div>
+           <div class="group">
+               {{ form_row(registrationForm.address) }}
+               {{ form_row(registrationForm.city) }}
+               {{ form_row(registrationForm.country) }}
+               {{ form_row(registrationForm.phone) }}
+           </div>
+       </div>
 
-    {{ form_start(registrationForm) }}
-    {{ form_widget(registrationForm) }}
+        <button type="submit" class="btn">Register</button>
+        {{ form_end(registrationForm) }}
+        <p>Alrady a member yet</p>
+        <a class="button outline" href="{{ path('app_login') }}" class="button">Log in</a>
+    </div>
 
-    <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
 {% endblock %}

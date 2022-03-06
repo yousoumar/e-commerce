@@ -1,0 +1,31 @@
+<div class="products">
+
+    <div class="grid">
+
+        {% for product in products %}
+            {% if (product.available) %}
+                <a href="{{ path('app_product_show', {'id':  product.id}) }}" class="product">
+                    <div class="img">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"/>
+                    </div>
+                    <h3> {{ product.name }}</h3>
+                </a>
+            {% else %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_category_show', {'id':  product.id}) }}" class="product unavailable">
+                        <div class="img">
+                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"/>
+                        </div>
+                        <h3> {{ product.name }}</h3>
+                    </a>
+                {% endif %}
+            {% endif %}
+        {% else %}
+
+            <p >No product records found, wait for the administrator to do the his job please :).</p>
+
+
+        {% endfor %}
+    </div>
+
+</div>

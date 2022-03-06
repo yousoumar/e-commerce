@@ -4,50 +4,11 @@
 
 {% block body %}
 
+    <h2>Categories</h2>
+    {{ include('partials/_categories.html.twig') }}
+    <h2>Products</h2>
 
-    <div class="categories">
-        <h2>Categories</h2>
-        <div class="grid">
+    {{ include('partials/_products.html.twig') }}
 
-            {% for category in categories %}
-                <a href="{{ path('app_category_show', {'id': category.id}) }}" class="category">
-                    <div class="img">
-                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"/>
-                    </div>
-                    <h3> {{ category.name }}</h3>
-                </a>
-
-            {% else %}
-
-                <p colspan="4">no records found</p>
-
-            {% endfor %}
-        </div>
-
-    </div>
-
-    <div class="products">
-        <h2>Products</h2>
-        <div class="grid">
-
-            {% for product in products %}
-                <a href="{{ path('app_category_show', {'id':  product.id}) }}" class="product">
-                    <div class="img">
-                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"/>
-                    </div>
-                    <h3> {{ product.name }}</h3>
-                </a>
-
-            {% else %}
-
-                <p colspan="4">no records found</p>
-
-            {% endfor %}
-        </div>
-
-    </div>
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('app_category_new') }}">Create new</a>
-    {% endif %}
 
 {% endblock %}

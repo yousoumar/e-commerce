@@ -1,4 +1,19 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="groupes">
+    <div class="group">
+        {{ form_row(form.email) }}
+        {{ form_row(form.password) }}
+        {{ form_row(form.firstName) }}
+        {{ form_row(form.lastName) }}
+    </div>
+    <div class="group">
+        {{ form_row(form.address) }}
+        {{ form_row(form.city) }}
+        {{ form_row(form.country) }}
+        {{ form_row(form.phone) }}
+    </div>
+
+</div>
+
+<button type="submit" class="btn">Save</button>
 {{ form_end(form) }}

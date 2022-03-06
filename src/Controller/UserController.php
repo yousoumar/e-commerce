@@ -15,11 +15,21 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
-    public function index(): Response
+    public function index(UserRepository $userRepository): Response
+    {
+        if(!$this->isGranted('ROLE_ADMIN')){
+            return $this->redirectToRoute("app_home");
+        }
+        return $this->render('user/index.html.twig', [
+            'users'=>$userRepository->findAll(),
+        ]);
+    }
+    #[Route('{id}/show', name: 'app_user_show', methods: ['GET'])]
+    public function show( User $user): Response
     {
 
-        return $this->render('user/index.html.twig', [
-            'user'=>$this->getUser(),
+        return $this->render('user/show.html.twig', [
+            'user'=>$user,
         ]);
     }
 
@@ -31,7 +41,7 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->add($user);
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_user_show', ["id"=>$user->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('user/edit.html.twig', [

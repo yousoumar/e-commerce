@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block class %}user-show{% endblock %}
+{% block body %}
+    <h1>Welcome {{ user.firstName }}:) Here are your profile information: </h1>
+    <div><strong>First name:</strong>  {{ user.firstName }}</div>
+    <div><strong>Last name:</strong>   {{ user.lastName  }}</div>
+    <div><strong>Email:</strong>  {{ user.email  }}</div>
+    <div><strong>Password:</strong>---------</div>
+    <div><strong>Phone:</strong>  {{ user.phone  }}</div>
+    <div><strong>Adress:</strong>  {{ user.address  }}</div>
+    <div><strong>Phone:</strong>  {{ user.city }}</div>
+    <div><strong>City:</strong>  {{ user.country}}</div>
+
+    <a class="button outline " href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+{% endblock %}

@@ -1,4 +1,4 @@
-*,::after, ::before{
+*,::after, ::before, ::placeholder{
   font:inherit;
   color: inherit;
   margin: 0;
@@ -13,7 +13,13 @@ html{
 }
 body{
   min-height: 100vh;
+  display: grid;
+  gap: 2rem;
+  grid-template-rows: auto 1fr auto;
 
+}
+main{
+  width: 100%;
 }
 a{
   text-decoration: none;
@@ -32,19 +38,55 @@ h3{
   font-size: 1.2rem;
   margin: 0;
 }
-
+strong{
+  font-weight: bold;
+}
 img{
   display: block;
   width: 100%;
   object-fit: cover;
 }
+option{
+  color: var(--background);
+}
+input, button, .button, select{
 
+  outline: none;
+  border: 1px solid var(--gray);
+  background-color: transparent;
+  display: block;
+  width: 100%;
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem ;
+  margin-top: .4rem ;
+}
+#product_available{
+  width: inherit;
+  display: inline-block;
+  margin-left: 1rem;
+}
+button, .button{
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--forground);
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  &.left{
+    margin-right: auto;
+    width: max-content;
+  }
+}
+.outline{
+  background-color: transparent;
+}
 .container{
   max-width: 1200px;
   margin: auto;
   padding: 1rem;
 }
-.primary{
+.primary,.alert{
   color: var(--primary);
 }
 
@@ -55,3 +97,73 @@ img{
   }
 }
 
+.products, .categories{
+
+  .unavailable{
+    .img{
+      position: relative;
+      &::before{
+        content :"Unavailable";
+        position: absolute;
+        z-index: 3;
+        right: 0rem;
+        top:0rem;
+        background-color: var(--background);
+        color: var(--forground);
+
+      }
+    }
+
+  }
+  .grid{
+    display: grid;
+    gap: 2rem;
+
+    .img{
+      height: 100%;
+      border-radius: 1rem;
+      height: 350px;
+      overflow: hidden;
+    }
+    img{
+      height: 100%;
+    }
+    h3{
+      color: var(--forground);
+    }
+
+  }
+  @include  media-breakpoint-up(md){
+    .grid{
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+.categories{
+  .category{
+    position: relative;
+
+  }
+  .img{
+    position: relative;
+    &::before{
+      content: "";
+      position: absolute;
+      top:0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, .6);
+    }
+  }
+  h3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: var(--forground);
+
+  }
+
+}

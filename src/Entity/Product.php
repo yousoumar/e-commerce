@@ -27,7 +27,7 @@ class Product
     private $available;
     /**
      * @Assert\NotNull(
-     *     message="You should chosse a category"
+     *     message="You should associted it with a category. If ther is'nt one, create it, please :)"
      * )
      */
 

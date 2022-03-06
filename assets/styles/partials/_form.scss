@@ -1,0 +1,32 @@
+.form{
+  border: 1px solid var(--gray);
+  padding: 1rem;
+  border-radius: 10px;
+  width: 100%;
+
+  p:first-of-type{
+    margin-bottom: 1rem;
+  }
+
+  ul{
+    list-style: none;
+    color: var(--primary);
+    margin: .5rem 0;
+  }
+  @include  media-breakpoint-up(md){
+    max-width: 500px;
+    min-width: 400px;
+    margin: 0 auto;
+
+    &.with-groups{
+      .groupes{
+        max-width: inherit;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+  }
+
+
+}

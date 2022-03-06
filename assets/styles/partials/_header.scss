@@ -1,20 +1,38 @@
 .header{
-  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  border-bottom: 1px solid var(--gray);
+  position: sticky;
+  background-color: var(--background);
+  top: 0;
+  z-index: 4;
   .container{
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
+  a{  color: var(--forground);}
+  svg{
+    width: 2rem;
 
-.cart{
+  }
+  .account svg{
+    width: 1.5rem;
+    transform: translateY(.3rem);
+  }
+
+  .right, .center{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+
+  .cart{
   position: relative;
   display: block;
   padding-right: 1rem;
   padding-top: 1rem;
   color: var(--forground);
-  svg{
-    width: 2rem;
-  }
+
   span{
     color: var(--primary);
     background-color: var(--forground);

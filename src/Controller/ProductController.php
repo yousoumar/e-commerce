@@ -76,6 +76,9 @@ class ProductController extends AbstractController
     #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
     public function delete(Request $request, Product $product, ProductRepository $productRepository): Response
     {
+        if(!$this->isGranted('ROLE_ADMIN')){
+            return $this->redirectToRoute("app_home");
+        }
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
             $productRepository->remove($product);
         }

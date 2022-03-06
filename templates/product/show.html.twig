@@ -1,47 +1,38 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Product{% endblock %}
+{% extends 'base.html.twig' %}
+{% block class %}category-show{% endblock %}
+{% block title %}Product | {{ product.name }}{% endblock %}
 
 {% block body %}
-    <h1>Product</h1>
-    <a href="{{ path('app_product_index') }}">Product list</a>
-    <a href="{{ path('app_category_index') }}">Category list</a>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ product.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ product.price }}</td>
-            </tr>
-            <tr>
-                <th>Available</th>
-                <td>{{ product.available ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
-    {% if not is_granted('ROLE_ADMIN') %}
-        {% if( product.id in app.session.get("cart")) %}
-        <a href="{{ path('app_product_add_to_cart', {'id': product.id}) }}">Remove from cart</a>
-        {% else %}
-            <a href="{{ path('app_product_add_to_cart', {'id': product.id}) }}">Add to cart</a>
-        {% endif %}
-    {% endif %}
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
-        {{ include('product/_delete_form.html.twig') }}
-    {% endif %}
+    <div class="category">
+        <div class="text">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="links">
+                        <a  href="{{ path('app_product_edit', {'id': product.id}) }}">Edit</a>
+                        {{ include('product/_delete_form.html.twig') }}
+                    </div>
+                {% else %}
+
+                    {% if( product.id in app.session.get("cart")) %}
+                        <a class="button outline left" href="{{ path('app_product_add_to_cart', {'id': product.id}) }}">Remove from cart</a>
+                    {% else %}
+                        <a class="button left" href="{{ path('app_product_add_to_cart', {'id': product.id}) }}">Add to cart</a>
+                    {% endif %}
+
+            {% endif %}
+
+        </div>
+        <div class="img"><img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"/></div>
+
+    </div>
+
+
+
+
 
 
 

@@ -25,7 +25,6 @@ class AppFixtures extends Fixture
         $user->setPassword($this->hasher->hashPassword( $user, 'user'));
         $user->setAddress("1 rue du Faubourg");
         $user->setCity("Paris");
-        $user->setCp("75019");
         $user->setCountry("France");
         $manager->persist($user);
 
@@ -37,7 +36,6 @@ class AppFixtures extends Fixture
         $admin->setPassword($this->hasher->hashPassword($admin, 'admin'));
         $admin->setAddress("1 rue du Faubourg");
         $admin->setCity("Paris");
-        $admin->setCp("75019");
         $admin->setCountry("France");
         $manager->persist($admin);
 

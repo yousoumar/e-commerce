@@ -1,51 +1,29 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Category{% endblock %}
+{% block class %}category-show{% endblock %}
+{% block title %}Category | {{ category.name }}{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
-    <a href="{{ path('app_category_index') }}">back to list</a>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ category.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ category.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+
+    <div class="category">
+        <div class="text">
+            <h2>{{ category.name }}</h2>
+            <p>{{ category.description }}</p>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="links">
+                    <a  href="{{ path('app_category_edit', {'id': category.id}) }}">Edit</a>
+                    {{ include('category/_delete_form.html.twig') }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="img"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"/></div>
+
+    </div>
+
+
     <h1>In this category</h1>
-    {% for product in category.products %}
-        <tr>
-            <td>{{ product.id }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.description }}</td>
+    {{ include('partials/_products.html.twig',{'products': category.products})}}
 
-            <td>
-                <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
-                {% endif %}
-            </td>
-        </tr>
-    {% else %}
-        <tr>
-            <td colspan="4">no records found</td>
-        </tr>
-    {% endfor %}
-<hr/>
 
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
-        {{ include('category/_delete_form.html.twig') }}
-    {% endif %}
 
 
 {% endblock %}
