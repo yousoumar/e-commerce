@@ -8,10 +8,18 @@
     {% if commands | length > 0 %}
     <div class="commands">
         {% for command in commands %}
+        {% if admin %}
             <div class="command">
-                <div>Command <strong>n° {{ command.id }}</strong>, for <strong>{{ command.total }} €</strong>, made by <strong>{{ command.customer }}</strong>.</div>
+                <div>Command <strong>n° {{ command.id }}</strong>, for <strong>{{ command.total }} €</strong>, made by <strong>{{ command.customer }}</strong></div>
 
             </div>
+        {% else %}
+            <div class="command">
+                <div>Command <strong>n° {{ command.id }}</strong>, for <strong>{{ command.total }} €</strong></div>
+
+            </div>
+        {% endif %}
+
         {% endfor %}
     </div>
     {% else %}
