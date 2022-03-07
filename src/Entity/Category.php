@@ -24,8 +24,8 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class,  orphanRemoval:true)]
     private $products;
 
-    #[ORM\Column(type: 'string', length: 3000)]
-    private $imgUrl;
+    #[ORM\Column(type: 'string',nullable: true)]
+    private $image;
 
     public function __construct()
     {
@@ -94,14 +94,14 @@ class Category
         return $this->name;
     }
 
-    public function getImgUrl(): ?string
+    public function getImage(): ?string
     {
-        return $this->imgUrl;
+        return $this->image;
     }
 
-    public function setImgUrl(string $imgUrl): self
+    public function setImage(string $image): self
     {
-        $this->imgUrl = $imgUrl;
+        $this->image = $image;
 
         return $this;
     }

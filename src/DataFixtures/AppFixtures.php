@@ -43,13 +43,13 @@ class AppFixtures extends Fixture
         $novel = new Category();
         $novel->setName("Novel");
         $novel->setDescription("An invented prose narrative that is usually long and complex and deals especially with human experience through a usually connected sequence of events.");
-        $novel->setImgUrl("https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+        $novel->setImage("https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
         $manager->persist($novel);
 
         $poetry = new Category();
         $poetry->setName("Poetry");
         $poetry->setDescription("Literary work in which the expression of feelings and ideas is given intensity by the use of distinctive style and rhythm; poems collectively or as a genre of literature.");
-        $poetry->setImgUrl("https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+        $poetry->setImage("https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
         $manager->persist($poetry);
 
 

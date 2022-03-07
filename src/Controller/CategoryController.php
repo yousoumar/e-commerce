@@ -33,6 +33,22 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+            if ($image) {
+                $newFilename = uniqid().'.'.$image->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $image->move(
+                        $this->getParameter('uploads'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $category->setImage($newFilename);
+            }
             $categoryRepository->add($category);
             return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -64,6 +80,22 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+            if ($image) {
+                $newFilename = uniqid().'.'.$image->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $image->move(
+                        $this->getParameter('uploads'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $category->setImage($newFilename);
+            }
             $categoryRepository->add($category);
             return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
         }
