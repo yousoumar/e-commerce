@@ -110,6 +110,17 @@ button, .button{
     color: var(--primary);
   }
 }
+
+.product, .category{
+  .img{
+    border-radius: 1rem;
+    height: 350px;
+    overflow: hidden;
+  }
+  img{
+    height: 100%;
+  }
+}
 .product{
   p{
     margin: .3rem 0;
@@ -117,7 +128,7 @@ button, .button{
   &.unavailable{
     .img{
       position: relative;
-      overflow: hidden;
+
       &::before{
         content :"Unavailable";
         position: absolute;
@@ -142,15 +153,7 @@ button, .button{
     display: grid;
     gap: 2rem;
 
-    .img{
-      height: 100%;
-      border-radius: 1rem;
-      height: 350px;
-      overflow: hidden;
-    }
-    img{
-      height: 100%;
-    }
+
     h3{
       color: var(--forground);
     }
