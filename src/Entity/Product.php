@@ -37,8 +37,7 @@ class Product
     private $category;
 
 
-    #[ORM\Column(type: 'string')]
-    #[ORM\JoinColumn(nullable: true)]
+    #[ORM\Column(type: 'string',nullable: true)]
     private $image;
 
 
