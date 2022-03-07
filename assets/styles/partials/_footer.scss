@@ -2,7 +2,9 @@
   border-top: 1px solid var(--gray);
   padding: 2rem 0;
   text-align: center;
-
+  a{
+    font-weight: normal;
+  }
   .container{
     padding: 2rem 1rem;
     display:grid;

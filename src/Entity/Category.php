@@ -24,6 +24,9 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class,  orphanRemoval:true)]
     private $products;
 
+    #[ORM\Column(type: 'string', length: 3000)]
+    private $imgUrl;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -89,5 +92,17 @@ class Category
     }
     public function __toString() {
         return $this->name;
+    }
+
+    public function getImgUrl(): ?string
+    {
+        return $this->imgUrl;
+    }
+
+    public function setImgUrl(string $imgUrl): self
+    {
+        $this->imgUrl = $imgUrl;
+
+        return $this;
     }
 }

@@ -36,6 +36,9 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
+    #[ORM\Column(type: 'string', length: 3000)]
+    private $imgUrl;
+
 
 
     public function getId(): ?int
@@ -99,6 +102,18 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getImgUrl(): ?string
+    {
+        return $this->imgUrl;
+    }
+
+    public function setImgUrl(string $imgUrl): self
+    {
+        $this->imgUrl = $imgUrl;
 
         return $this;
     }

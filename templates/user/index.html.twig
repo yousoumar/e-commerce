@@ -6,7 +6,7 @@
     <h1>All users, literally all of them :)</h1>
     <div class="users">
     {% for user in users  %}
-           <div class="user {{ is_granted('ROLE_ADMIN') ? "admin" :"" }}">
+           <div class="user {{ "ROLE_ADMIN" in user.roles ? "admin" :"" }}">
                <div>{{ user.firstName }}, <strong>{{ user.lastName }}</strong></div>
                <div>{{ user.city }}, <strong>{{ user.country }}</strong></div>
                <div>{{ user.email }}</div>

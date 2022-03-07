@@ -45,6 +45,10 @@ class HomeCartController extends AbstractController
         $session = $request->getSession();
         $cart =  $session->get("cart");
 
+        if($this->isGranted('ROLE_ADMIN')){
+            $cart=[];
+        }
+
         if(!$cart){
             $cart=[];
         }

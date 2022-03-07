@@ -4,7 +4,8 @@ namespace App\Form;
 
 use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,10 +15,16 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description')
+            ->add("description", TextareaType::class, [
+                "label" => "Description"
+            ])
             ->add('price')
+            ->add('imgUrl', TextType::class, [
+                "label" => "Image url"
+            ])
             ->add('category')
             ->add('available')
+
         ;
     }
 

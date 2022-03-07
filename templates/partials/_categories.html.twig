@@ -5,7 +5,7 @@
         {% for category in categories %}
             <a href="{{ path('app_category_show', {'id': category.id}) }}" class="category">
                 <div class="img">
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"/>
+                    <img src="{{ category.imgUrl }}" onerror="this.onerror=null; this.src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Ym9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'"/>
                 </div>
                 <h3> {{ category.name }}</h3>
             </a>
