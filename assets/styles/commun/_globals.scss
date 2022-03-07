@@ -61,7 +61,11 @@ input, button, .button, select, textarea{
   margin-bottom: 1rem ;
   margin-top: .4rem ;
 }
-
+input[type="checkbox"]{
+  width: max-content;
+  display: inline-block;
+  margin-left: 1rem;
+}
 button, .button{
   background-color: var(--primary);
   border-color: var(--primary);

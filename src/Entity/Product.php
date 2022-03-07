@@ -36,8 +36,10 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
-    #[ORM\Column(type: 'string', length: 3000)]
-    private $imgUrl;
+
+    #[ORM\Column(type: 'string')]
+    #[ORM\JoinColumn(nullable: true)]
+    private $image;
 
 
 
@@ -106,14 +108,14 @@ class Product
         return $this;
     }
 
-    public function getImgUrl(): ?string
+    public function getImage(): ?string
     {
-        return $this->imgUrl;
+        return $this->image;
     }
 
-    public function setImgUrl(string $imgUrl): self
+    public function setImage(string $image): self
     {
-        $this->imgUrl = $imgUrl;
+        $this->image = $image;
 
         return $this;
     }
