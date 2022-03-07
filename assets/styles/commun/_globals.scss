@@ -77,6 +77,7 @@ button, .button{
     margin-left: auto;
     width: max-content;
   }
+
 }
 .outline{
   background-color: transparent;
@@ -186,15 +187,7 @@ button, .button{
 
 }
 
-.total-cart{
 
-  font-size: 2rem;
-  margin-left: auto;
-  width: max-content;
-  strong{
-    color: var(--primary);
-  }
-}
 .users{
   display: grid;
   gap: 2rem;
@@ -226,5 +219,21 @@ button, .button{
       background-color: var(--primary);
       font-size: .9rem;
     }
+  }
+}
+
+.commands{
+  display: grid;
+  gap: 1rem;
+  .command{
+    border: 1px solid var(--gray);
+    padding: .5rem;
+    border-radius: 10px;
+  }
+  strong{
+    color: var(--primary);
+  }
+  @include  media-breakpoint-up(md){
+    grid-template-columns: 1fr 1fr;
   }
 }

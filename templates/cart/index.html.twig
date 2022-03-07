@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block class %}Cart{% endblock %}
+{% block class %}cart{% endblock %}
 {% block title %}Cart{% endblock %}
 
 {% block body %}
@@ -9,13 +9,23 @@
 
         {% if products |length <=0 %}
             <h1>Empty, literally empty :( </h1>
-            <p colspan="6">No records found in your cart. Feel free to browse our large <span class="logo"><span>B</span>ook<span>S</span>tore</span>. We are sure you can find something that suits you :). </p>
+            {% if is_granted('ROLE_ADMIN') %}
+                <p colspan="6">You are logged as admin, therefore you cannot command. Sorry but you should use your normal account :( </p>
+            {% else %}
+                <p colspan="6">No records found in your cart. Feel free to browse our large <span class="logo"><span>B</span>ook<span>S</span>tore</span>. We are sure you can find something that suits you :) </p>
+            {% endif %}
+
+
         {% endif %}
 
         {% if products | length > 0 %}
             <h1>In your cart and  us ready to send them :)</h1>
             {{ include('partials/_products.html.twig')}}
-            <div class="total-cart">Total: <strong>{{ totalPrice }}€</strong> </div>
+           <div class="bottom">
+               <div class="total-cart"> Total: <strong>{{ totalPrice }}€</strong> </div>
+               <a class="button" href="{{ path('app_command_new')}}">Command</a>
+           </div>
         {% endif %}
+
 
 {% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All commands{% endblock %}
+
+{% block body %}
+
+    <h1>{{ admin ? "All commands, literally all of them :)" : "All your commands :)" }}</h1>
+    {% if commands | length > 0 %}
+    <div class="commands">
+        {% for command in commands %}
+            <div class="command">
+                <div>Command <strong>n° {{ command.id }}</strong>, for <strong>{{ command.total }} €</strong>, made by <strong>{{ command.customer }}</strong>.</div>
+
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>No one has commanded, not yet :(</p>
+    {% endif %}
+{% endblock %}

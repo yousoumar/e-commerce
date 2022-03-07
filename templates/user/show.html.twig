@@ -20,6 +20,9 @@
             </div>
         </div>
        <div class="buttons">
+           {% if not is_granted('ROLE_ADMIN')%}
+           <a class="button outline right" href="{{ path('app_command')}}">My commands</a>
+           {%  endif %}
            <a class="button outline right" href="{{ path('app_user_edit', {'id': user.id}) }}">Edit</a>
            <a class="button outline right" href="{{ path('app_logout', {'id': user.id}) }}">Logout</a>
        </div>

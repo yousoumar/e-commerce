@@ -56,3 +56,28 @@
     }
   }
 }
+
+.cart{
+  .bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    border-top: 1px solid var(--gray);
+    padding-top: 2rem;
+    margin-top: 2rem;
+    a{
+      margin: 0;
+      width: max-content;
+    }
+    .total-cart{
+
+      width: max-content;
+      strong{
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+    }
+  }
+
+}
