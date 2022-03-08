@@ -1,52 +1,123 @@
-.header{
+.header {
   border-bottom: 1px solid var(--gray);
   position: sticky;
   background-color: var(--background);
   top: 0;
   z-index: 4;
-  .container{
+
+  .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
   }
-  a{  color: var(--forground);}
-  svg{
+
+  a {
+    color: var(--forground);
+    position: relative;
+  }
+
+  svg {
     width: 2rem;
 
   }
-  .account svg{
+
+  .account svg {
     width: 1.5rem;
-    transform: translateY(.3rem);
+    transform: translateY(.2rem);
   }
 
-  .right, .center{
+  .right, .center {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
   }
 
+  .right {
+    margin-left: auto;
 
-  .cart{
-  position: relative;
-  display: block;
-  padding-right: 1rem;
-  padding-top: 1rem;
-  color: var(--forground);
-
-  span{
-    color: var(--primary);
-    background-color: var(--forground);
-    border-radius: 50%;
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top:0rem;
-    right:-.3rem;
-
+    @include media-breakpoint-up(md) {
+      margin: 0;
+    }
   }
-}
+
+  .center {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    flex-direction: column;
+    padding-top: 10rem;
+    background-color: var(--black);
+    display: none;
+
+    &.open {
+      display: flex;
+    }
+
+    @include media-breakpoint-up(md) {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      background-color: transparent;
+
+    }
+  }
+
+  .hamburger-button {
+    padding: 0 .5rem;
+    margin: 0;
+    width: max-content;
+    position: relative;
+
+    svg {
+      height: 2rem;
+    }
+
+    .close {
+      display: none;
+    }
+
+    &.clicked {
+      .open {
+        display: none;
+      }
+
+      .close {
+        display: block;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      display: none;
+
+    }
+  }
+
+  .cart {
+    position: relative;
+    display: block;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    color: var(--forground);
+    transform: translateY(-.3rem);
+
+    span {
+      color: var(--primary);
+      background-color: var(--forground);
+      border-radius: 50%;
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0rem;
+      right: -.3rem;
+
+    }
+  }
 }
