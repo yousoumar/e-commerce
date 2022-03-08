@@ -8,6 +8,8 @@
 /public/uploads/
 /var/
 /vendor/
+.DS_Store
+
 ###< symfony/framework-bundle ###
 
 ###> symfony/webpack-encore-bundle ###
