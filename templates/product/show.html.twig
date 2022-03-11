@@ -1,4 +1,3 @@
-
 {% extends 'base.html.twig' %}
 {% block class %}category-show{% endblock %}
 {% block title %}Product | {{ product.name }}{% endblock %}
@@ -11,25 +10,29 @@
 
             <p>{{ product.description }}</p>
             <p class="primary"><strong>{{ product.price }}</strong> €</p>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <div class="links">
-                        <a  href="{{ path('app_product_edit', {'id': product.id}) }}">Edit</a>
-                        {{ include('product/_delete_form.html.twig') }}
-                    </div>
-                {% else %}
-                    {% if product.available %}
-                        {% if( product.id in app.session.get("cart")) %}
-                            <a class="button outline left" href="{{ path('app_product_add_to_cart', {'id': product.id}) }}">Remove from cart</a>
-                        {% else %}
-                            <a class="button left" href="{{ path('app_product_add_to_cart', {'id': product.id}) }}">Add to cart</a>
-                        {% endif %}
-                    {% endif%}
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="links">
+                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">Edit</a>
+                    {{ include('product/_delete_form.html.twig') }}
+                </div>
+            {% else %}
+                {% if product.available %}
+                    {% if( product.id in app.session.get("cart")) %}
+                        <a class="button outline left" href="{{ path('app_product_add_to_cart', {'id': product.id}) }}">Remove
+                            from cart</a>
+                    {% else %}
+                        <a class="button left" href="{{ path('app_product_add_to_cart', {'id': product.id}) }}">Add to
+                            cart</a>
+                    {% endif %}
+                {% endif %}
 
 
             {% endif %}
 
         </div>
-        <div class="img"><img src="/uploads/{{ product.image }}" onerror="this.onerror=null; this.src = 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'"/></div>
+        <div class="img"><img src="/uploads/{{ product.image }}"
+                              onerror="this.onerror=null; this.src = 'https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80'"/>
+        </div>
 
     </div>
 
